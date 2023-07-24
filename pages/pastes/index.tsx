@@ -1,24 +1,24 @@
 import React from "react";
 import Layout from "../../components/Layout";
-import Post from "../../components/Posts/Post";
-import { POSTS } from "../../data/posts";
-import PostView from "../../components/Posts/PostView";
+import Paste from "../../components/Pastes/Paste";
+import { PASTES } from "../../data/pastes";
+import PasteView from "../../components/Pastes/PasteView";
 
-const Posts = () => {
+const Pastes = () => {
   return (
     <Layout>
       <div className="mx-[132px] grid grid-cols-12 gap-[36px]">
         <div className="col-span-7">
-          {POSTS.map((post, index) => (
-            <Post
+          {PASTES.map((paste, index) => (
+            <Paste
               key={index}
-              {...post} 
+              {...paste} 
             />
           ))}
         </div>
         <div className="col-span-5">
           {[0,1,2,3,4].map((count) => (
-            <PostView key={count}/>
+            <PasteView key={count}/>
           ))}
         </div>
       </div>
@@ -26,4 +26,4 @@ const Posts = () => {
   );
 }
 
-export default Posts;
+export default Pastes;

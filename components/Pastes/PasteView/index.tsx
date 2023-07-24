@@ -3,7 +3,7 @@ import { Card } from "../../Common/Cards";
 import { EyeIcon } from "../../Icons/EyeIcon";
 import { ReportIcon, UserGroupIcon, WarningIcon } from "../../Icons";
 
-const PostView = () => {
+const PasteView = () => {
   return (
     <Card style="mb-[32px]">
       <div className="flex items-center gap-[19px] mb-[18px]">
@@ -30,4 +30,4 @@ const PostView = () => {
   );
 }
 
-export default PostView;
+export default PasteView;

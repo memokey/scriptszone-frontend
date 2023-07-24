@@ -5,19 +5,19 @@ import { minifyString } from "../../../utils";
 import SecondaryButton from "../../Common/Buttons/SecondaryButton";
 import { BanIcon, MessageIcon, TrashIcon, WarningIcon } from "../../Icons";
 
-export type PostType = {
+export type PasteType = {
   title: string;
   scripts: string;
   description: any;
   date: string;
 }
 
-const Post = (props: PostType) => {
+const Paste = (props: PasteType) => {
   return (
     <Card style="mb-8">
       <div className="flex gap-4 mb-[48px]">
         <div className="">
-          <Image src={"/images/post/avatar.png"} width={62} height={62} alt={"avatar"} className="rounded-full" />
+          <Image src={"/images/paste/avatar.png"} width={62} height={62} alt={"avatar"} className="rounded-full" />
         </div>
         <div>
           <div className="flex gap-[10px] items-center mb-[6px]">
@@ -59,4 +59,4 @@ const Post = (props: PostType) => {
   );
 }
 
-export default Post;
+export default Paste;

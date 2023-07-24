@@ -1,6 +1,6 @@
-import { PostType } from "../components/Posts/Post";
+import { PasteType } from "../components/Pastes/Paste";
 
-export const POSTS: PostType[] = [
+export const PASTES: PasteType[] = [
   {
     title: 'Bloxfruits Roblox Hoho Script1',
     scripts: `loadstring(game:HttpGet("https://raw.githubusercontent.com/Corrupt2625/pjv
