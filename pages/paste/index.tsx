@@ -10,7 +10,7 @@ const Paste = () => {
       <div className="mx-[300px]">
         <div className="relative w-full mb-[120px]">
           <img src="/images/paste/cardbg.png" alt="bg" className="absolute top-0 left-0 right-0 rounded-t-[10px] w-full" />
-          <Card title="Bloxfruits Roblox Hoho Script" style="absolute top-[76px] left-0 right-0" bgImg="/images/paste/cardbg.png">
+          <Card title="Bloxfruits Roblox Hoho Script" style="absolute top-[76px] left-0 right-0 linear-gradient-card" bgImg="/images/paste/cardbg.png">
             <p className="text-grey text-[16px] font-normal mb-[80px]">{PASTES[0].scripts}</p>
             <div className="flex justify-end">
               <SecondaryButton 

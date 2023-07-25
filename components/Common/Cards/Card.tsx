@@ -17,7 +17,7 @@ const Card = (props: CardType) => {
     >
       {props.title && (
         <div className={`border-b border-[#EDEDED] rounded-[10px] flex items-center relative z-20`}>
-          <div className="flex w-full justify-between items-center mb-[36px]">
+          <div className="flex w-full justify-between items-center mb-[24px] mt-[12px]">
             <div className="text-[20px] font-bold text-[#3C6AFF]">
               {props.title}
             </div>
