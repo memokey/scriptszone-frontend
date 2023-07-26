@@ -1,5 +1,8 @@
 import Head from "next/head"
 import {PrivyProvider} from '@privy-io/react-auth';
+import { Toaster } from "react-hot-toast";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 import '../styles/globals.css'
 import '../styles/app.css'
 import '../styles/custom.css'
@@ -11,8 +14,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    // <Provider store={store}>
-    <>
+    <Provider store={store}>
       <Head>
         <title>Scriptszone</title>
         <meta
@@ -33,9 +35,19 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <Component {...pageProps} />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            className: '',
+            style: {
+              border: '1px solid #FFFFFF',
+              padding: '16px',
+              color: 'light',
+            },
+          }}
+        />
       </PrivyProvider>
-    </>
-    // </Provider>
+    </Provider>
   )
 }
 

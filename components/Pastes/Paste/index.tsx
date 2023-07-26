@@ -4,15 +4,34 @@ import { Card } from "../../Common/Cards";
 import { minifyString } from "../../../utils";
 import SecondaryButton from "../../Common/Buttons/SecondaryButton";
 import { BanIcon, MessageIcon, TrashIcon, WarningIcon } from "../../Icons";
+import { useRouter } from "next/router";
+import { apiCaller } from "../../../utils/fetcher";
+import { toast } from "react-hot-toast";
+import { useDispatch } from 'react-redux';
+import { removePaste } from "../../../redux/slices/authSlice";
 
 export type PasteType = {
+  id: string;
   title: string;
   scripts: string;
   description: any;
+  gameLink: string;
   date: string;
 }
 
 const Paste = (props: PasteType) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const deletePaste = () => {
+    apiCaller.post('/pastes/deletepaste', {
+      id: props.id,
+    }).then(res => {
+      toast.success('The paste was Successfully removed.');
+      dispatch(removePaste(props.id))
+    })
+  }
+
   return (
     <Card style="mb-8">
       <div className="flex gap-4 mb-[48px]">
@@ -21,7 +40,12 @@ const Paste = (props: PasteType) => {
         </div>
         <div>
           <div className="flex gap-[10px] items-center mb-[6px]">
-            <div className="text-secondary text-[20px] font-medium">{props.title}</div>
+            <div 
+              className="text-secondary text-[20px] font-medium hover:underline cursor-pointer"
+              onClick={() => {
+                router.push(`/adminpaste/${props.id}`)
+              }}
+            >{props.title}</div>
             <div className="text-grey text-[16px] font-normal">{props.date}</div>
           </div>
           <div className="text-grey text-[16px] font-normal">
@@ -34,7 +58,9 @@ const Paste = (props: PasteType) => {
           key={0}
           caption="Delete"
           icon={<TrashIcon />}
-          onClick={() => {}} 
+          onClick={() => {
+            deletePaste();
+          }} 
         />
         <SecondaryButton
           key={0}

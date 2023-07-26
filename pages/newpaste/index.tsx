@@ -22,7 +22,7 @@ const newPaste = () => {
             <div className="flex justify-center mt-[20px]">
               <PrimaryButton
                 icon={<MessageIcon />}
-                caption="Send Wallet Confirmation"
+                caption="Send Email Confirmation"
                 onClick={() => {}} 
               />
             </div>

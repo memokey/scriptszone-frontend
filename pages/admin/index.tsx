@@ -3,32 +3,49 @@ import Logo from "../../components/Layout/Header/Logo";
 import PrimaryButton from "../../components/Common/Buttons/PrimaryButton";
 import WalletButton from "../../components/Admin/WalletButton";
 import { usePrivy } from "@privy-io/react-auth";
+import { useSelector, RootStateOrAny } from 'react-redux';
 import { useRouter } from "next/router";
+import MenuItems from "../../components/Layout/Header/MenuItems";
+import { MENU_LIST } from "../../data/header";
+import AdminLayout from "../../components/Admin/AdminLayout";
+import { Card } from "../../components/Common/Cards";
+import PasteView from "../../components/Pastes/PasteView";
+import Paste from "../../components/Pastes/Paste";
 
 const Admin = () => {
-  const router = useRouter();
+  const { pastes } = useSelector((state: RootStateOrAny) => ({
+    pastes: state.auth.pastes,
+  }));
+
   const {
     ready, 
     authenticated, 
   } = usePrivy();
 
   return (
-    <div className="py-[10px] mx-[132px]">
-      <div className="flex justify-between">
-        <Logo />
-        <div className="flex gap-8">
-          {ready && authenticated && (
-            <PrimaryButton
-              caption="New Paste"
-              onClick={() => {
-                router.push('/newadminpaste');
-              }} 
-            />
-          )}
-          <WalletButton />
+    <AdminLayout>
+      {ready && authenticated && (
+        <div className="mx-[132px] grid grid-cols-12 gap-[36px]">
+          <div className="col-span-7">
+            {pastes && (
+              pastes.map((paste, index) => (
+                <Paste
+                  key={index}
+                  {...paste} 
+                />
+              ))
+            )}
+          </div>
+          <div className="col-span-5">
+          {pastes && (
+            pastes.map((index) => (
+              <PasteView key={index}/>
+            )))
+          }
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </AdminLayout>
   );
 }
 
