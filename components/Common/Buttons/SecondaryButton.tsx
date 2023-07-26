@@ -13,7 +13,7 @@ const SecondaryButton = (props: SecondaryButtonProps) => {
 
   return (
     <button
-      className={`font-medium py-[16px] px-[32px] rounded-[8px] text-white h-[50px] text-[16px] hover:shadow-[0px_0px_10px_#E33838] sm:text-[18px] text-center tracking-wider inline-flex items-center justify-center ${
+      className={`font-medium py-[16px] px-[32px] rounded-[8px] text-white h-[50px] text-[16px] duration-1000 transition-shadow hover:shadow-[0px_0px_10px_#E33838] sm:text-[18px] text-center tracking-wider inline-flex items-center justify-center ${
         props.bordered
             ? '!text-primary border-primary border bg-white'
             : ''

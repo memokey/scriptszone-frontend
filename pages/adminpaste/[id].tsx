@@ -10,38 +10,43 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   
   return (
     <AdminLayout>
-      <div className="mx-[300px]">
-        <div className="relative w-full mb-[120px]">
-          <img src="/images/paste/cardbg.png" alt="bg" className="absolute top-0 left-0 right-0 rounded-t-[10px] w-full" />
-          <Card title={paste.title} style="absolute top-[76px] left-0 right-0 linear-gradient-card" bgImg="/images/paste/cardbg.png">
-            <p className="text-grey text-[16px] font-normal mb-[80px]">{paste.scripts}</p>
+      <div className="mx-[35px] flex gap-4">
+        <div className="w-[300px] bg-[#FAFAFA]"></div>
+        <div className="w-full">
+          <div className="relative w-full mb-[120px]">
+            <img src="/images/paste/cardbg.png" alt="bg" className="absolute top-0 left-0 right-0 rounded-t-[10px] w-full" />
+            <Card title={paste.title} style="absolute top-[76px] left-0 right-0 linear-gradient-card" bgImg="/images/paste/cardbg.png">
+              <p className="text-grey text-[16px] font-normal mb-[80px]">{paste.scripts}</p>
+              <div className="flex justify-end">
+                <SecondaryButton 
+                  bordered={true} 
+                  caption="Copy"
+                  onClick={() => {}}
+                />
+              </div>
+            </Card>
+          </div>
+          <Card title="Description & Features : " style="mb-[40px]">
+            <div className="text-grey text-[16px] font-normal mb-8">
+              {paste.description} 
+            </div>
             <div className="flex justify-end">
-              <SecondaryButton 
-                bordered={true} 
-                caption="Copy"
-                onClick={() => {}}
-              />
+              <div className="flex gap-2">
+                <SecondaryButton
+                  caption="Raw"
+                  bordered={true}
+                  onClick={() => {}}
+                />
+                <SecondaryButton
+                  caption="Download"
+                  onClick={() => {}}
+                />
+              </div>
             </div>
           </Card>
+          <div className="w-full h-[250px] bg-[#FAFAFA]"></div>
         </div>
-        <Card title="Description & Features : " style="mb-[40px]">
-          <div className="text-grey text-[16px] font-normal mb-8">
-            {paste.description} 
-          </div>
-          <div className="flex justify-end">
-            <div className="flex gap-2">
-              <SecondaryButton
-                caption="Raw"
-                bordered={true}
-                onClick={() => {}}
-              />
-              <SecondaryButton
-                caption="Download"
-                onClick={() => {}}
-              />
-            </div>
-          </div>
-        </Card>
+        <div className="w-[300px] bg-[#FAFAFA]"></div>
       </div>
     </AdminLayout>
   );
