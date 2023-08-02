@@ -10,7 +10,6 @@ export interface PrimaryButtonProps {
 }
 
 const PrimaryButton = (props: PrimaryButtonProps) => {
-
   return (
     <button
       className={`font-medium py-[16px] px-[32px] rounded-[4px] text-white h-[50px] text-[16px] sm:text-[18px] text-center tracking-wider inline-flex items-center justify-center ${

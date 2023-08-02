@@ -9,6 +9,7 @@ import { apiCaller } from "../../../utils/fetcher";
 import { toast } from "react-hot-toast";
 import { useDispatch } from 'react-redux';
 import { removePaste } from "../../../redux/slices/authSlice";
+import { usePrivy } from "@privy-io/react-auth";
 
 export type PasteType = {
   id: string;
@@ -22,8 +23,19 @@ export type PasteType = {
 const Paste = (props: PasteType) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { getAccessToken } = usePrivy();
 
-  const deletePaste = () => {
+  const deletePaste = async () => {
+    const authToken = await getAccessToken();
+    apiCaller.interceptors.request.use(
+      (config) => {
+        config.headers.Authorization = `Bearer ${authToken}`;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
     apiCaller.post('/pastes/deletepaste', {
       id: props.id,
     }).then(res => {

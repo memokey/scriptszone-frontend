@@ -15,7 +15,8 @@ const NewAdminPaste = () => {
   const router = useRouter();
   const {
     ready, 
-    authenticated, 
+    authenticated,
+    getAccessToken 
   } = usePrivy();
 
   useEffect(() => {
@@ -24,7 +25,17 @@ const NewAdminPaste = () => {
     }
   }, []);
 
-  const insertNewPaste = () => {
+  const insertNewPaste = async () => {
+    const authToken = await getAccessToken();
+    apiCaller.interceptors.request.use(
+      (config) => {
+        config.headers.Authorization = `Bearer ${authToken}`;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
     apiCaller.post("/pastes/newpaste", {
       title, scripts, description, gameLink
     }).then(res => {
