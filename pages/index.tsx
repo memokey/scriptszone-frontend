@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 
 const IndexPage = () => (
   <Layout>
-    <div className='mx-[132px] h-[70vh]'>
+    <div className='w-[1450px] mx-auto h-[70vh]'>
       <h1 className='text-[30px] font-bold text-center mt-10'>Welcome to Scriptszone 👋</h1>
     </div>
   </Layout>

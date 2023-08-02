@@ -28,7 +28,7 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   
   return (
     <AdminLayout>
-      <div className="mx-[35px] flex gap-4">
+      <div className="w-[1450px] mx-auto flex gap-4">
         <div className="w-[300px] bg-[#FAFAFA]"></div>
         <div className="w-full">
           <div className="relative w-full mb-[120px]">

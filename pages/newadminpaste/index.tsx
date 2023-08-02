@@ -54,7 +54,7 @@ const NewAdminPaste = () => {
   return (
     <AdminLayout>
       {ready && authenticated && (
-        <div className="ml-[132px] mr-[350px]">
+        <div className="w-[1450px] mx-auto">
           <Card title="New Paste *" style="mb-[40px]">
             <input 
               type="text" 
