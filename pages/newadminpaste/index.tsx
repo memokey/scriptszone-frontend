@@ -6,6 +6,11 @@ import { useRouter } from "next/router";
 import AdminLayout from "../../components/Admin/AdminLayout";
 import { apiCaller } from "../../utils/fetcher";
 import toast from 'react-hot-toast';
+import Editor from "react-simple-code-editor";
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/themes/prism.css'; //Example style, you can use another
 
 const NewAdminPaste = () => {
   const [title, setTitle] = useState('');
@@ -63,12 +68,15 @@ const NewAdminPaste = () => {
               onChange={(e) => {setTitle(e.target.value)}} 
               className="w-full px-6 py-3 mb-4 border border-[#E9E9E9] rounded-[6px] focus:outline-none"  
             />
-            <textarea 
-              rows={10} 
-              className="w-full px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" 
-              placeholder="Paste your script here!"
+            <Editor
               value={scripts}
-              onChange={(e) => {setScripts(e.target.value)}}
+              onValueChange={code => setScripts(code)}
+              highlight={code => highlight(code, languages.js)}
+              padding={10}
+              style={{
+                fontFamily: 'Poppins',
+                fontSize: 16,
+              }}
             />
           </Card>
           <Card title="Description & Features : " style="mb-[40px]">

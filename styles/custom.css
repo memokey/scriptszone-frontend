@@ -1,3 +1,9 @@
 .linear-gradient-card {
   background: linear-gradient(to top, rgba(255,255,255,1) 87%, rgba(255,255,255,0) 100%);
 }
+
+.npm__react-simple-code-editor__textarea {
+  outline: 0;
+  border: #E9E9E9 solid 1px !important;
+  border-radius: 4px;
+}

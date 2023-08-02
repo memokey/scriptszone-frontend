@@ -5,6 +5,8 @@ import SecondaryButton from "../../components/Common/Buttons/SecondaryButton";
 import { getStaticPaths, PastePageProps, getStaticProps } from "../../modules/Paste";
 import AdminLayout from "../../components/Admin/AdminLayout";
 import { apiCaller, fetcher } from "../../utils/fetcher";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { light } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   if (!success) return <></>;
@@ -36,7 +38,9 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
               <img src={gameLink} alt="bg" className="rounded-t-[10px] w-full" />
             </div>
             <Card title={paste.title} style="absolute top-[76px] left-0 right-0 linear-gradient-card" bgImg="/images/paste/cardbg.png">
-              <p className="text-grey text-[16px] font-normal mb-[80px]">{paste.scripts}</p>
+              <SyntaxHighlighter language="javascript" style={light}>
+                {paste.scripts}
+              </SyntaxHighlighter>
               <div className="flex justify-end">
                 <SecondaryButton 
                   bordered={true} 
