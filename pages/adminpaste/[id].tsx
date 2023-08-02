@@ -13,7 +13,6 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   useEffect(() => {
     const fetchGameThumbnailLink = async () => {
       try {
-        
         const {
           data: res
         } = await apiCaller.post(`/pastes/fetchThumbnail`, {gameLink: paste.gameLink});
@@ -45,6 +44,7 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
               </div>
             </Card>
           </div>
+
           <Card title="Description & Features : " style="mb-[40px]">
             <div className="text-grey text-[16px] font-normal mb-8">
               {paste.description} 
