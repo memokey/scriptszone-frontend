@@ -1,53 +1,12 @@
-/** @type {import('next').NextConfig} */
-const withPlugins = require("next-compose-plugins");
-const webpack = require("webpack");
+const withTM = require('next-transpile-modules')([
+  'react-syntax-highlighter'
+]); // pass the modules you would like to see transpiled
 
-/** eslint-disable @typescript-eslint/no-var-requires */
-const withTM = require("next-transpile-modules")([
-  "react-syntax-highlighter"
-]);
-
-const plugins = [
-  [
-    withTM,
-    {
-      webpack5: true,
-      reactStrictMode: true,
-    },
-  ],
-];
-
-const nextConfig = {
-  distDir: "build",
-  swcMinify: false,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-      {
-        protocol: "http",
-        hostname: "**",
-      },
-    ],
-  },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback.fs = false;
-      config.resolve.alias = {
-        ...config.resolve.alias,
-      }
-      // FIX this
-      // Disable minimize to make it work with Candy Machine template
-      // minimization brakes Public Key names
-      config.optimization.minimize = false;
-    }
+module.exports = withTM({
+  // Your Next.js config is here
+  webpack: (config, options) => {
+    // modify the webpack config however you'd like to by adding plugins, rules etc.
+    // Return your customised Webpack Config
     return config;
   },
-};
-
-module.exports = withPlugins(plugins, nextConfig);
+});
