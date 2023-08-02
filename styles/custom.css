@@ -7,3 +7,7 @@
   border: #E9E9E9 solid 1px !important;
   border-radius: 4px;
 }
+
+.language-javascript {
+  padding: 0px !important;
+}
