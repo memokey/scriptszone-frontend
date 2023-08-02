@@ -7,10 +7,13 @@ import AdminLayout from "../../components/Admin/AdminLayout";
 import { apiCaller, fetcher } from "../../utils/fetcher";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   if (!success) return <></>;
   const [gameLink, setGameLink] = useState('/images/paste/cardbg.png');
+  const router = useRouter();
 
   useEffect(() => {
     const fetchGameThumbnailLink = async () => {
@@ -27,6 +30,24 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
       fetchGameThumbnailLink();
     }
   }, [paste])
+
+  const copy = () => {
+    navigator.clipboard.writeText(paste.scripts).then(function() {
+      toast('Copying to clipboard was successful!');
+    }, function(err) {
+      console.error('Could not copy text: ', err);
+    });
+  }
+
+  const download = () => {
+    var blob = new Blob([paste.scripts], {type: 'text/plain'});
+    var url = URL.createObjectURL(blob);
+      
+    var link = document.createElement('a');
+    link.download = 't.lua';
+    link.href = url;
+    link.click();
+  }
   
   return (
     <AdminLayout>
@@ -45,7 +66,7 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
                 <SecondaryButton 
                   bordered={true} 
                   caption="Copy"
-                  onClick={() => {}}
+                  onClick={copy}
                 />
               </div>
             </Card>
@@ -60,11 +81,13 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
                 <SecondaryButton
                   caption="Raw"
                   bordered={true}
-                  onClick={() => {}}
+                  onClick={() => {
+                    router.push(`/raw/${paste._id}`)
+                  }}
                 />
                 <SecondaryButton
                   caption="Download"
-                  onClick={() => {}}
+                  onClick={download}
                 />
               </div>
             </div>

@@ -72,7 +72,7 @@ const NewAdminPaste = () => {
               value={scripts}
               onValueChange={code => setScripts(code)}
               highlight={code => highlight(code, languages.js)}
-              padding={10}
+              padding={'24px'}
               style={{
                 fontFamily: 'Poppins',
                 fontSize: 16,
