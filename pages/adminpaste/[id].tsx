@@ -32,7 +32,9 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
         <div className="w-[300px] bg-[#FAFAFA]"></div>
         <div className="w-full">
           <div className="relative w-full mb-[120px]">
-            <img src={gameLink} alt="bg" className="absolute top-0 left-0 right-0 rounded-t-[10px] w-full h-[152px]" />
+            <div className="absolute top-0 left-0 overflow-hidden right-0 h-[152px] rounded-t-[10px] w-full">
+              <img src={gameLink} alt="bg" className="rounded-t-[10px] w-full" />
+            </div>
             <Card title={paste.title} style="absolute top-[76px] left-0 right-0 linear-gradient-card" bgImg="/images/paste/cardbg.png">
               <p className="text-grey text-[16px] font-normal mb-[80px]">{paste.scripts}</p>
               <div className="flex justify-end">
