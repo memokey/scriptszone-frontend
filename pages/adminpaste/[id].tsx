@@ -14,7 +14,7 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
     const fetchGameThumbnailLink = async () => {
       try {
         const url = new URL(paste.gameLink);
-        const gameId = url.pathname.split('/')[3];
+        const gameId = url.pathname.split('/')[2];
         
         const res = await apiCaller.get(`https://apis.roblox.com/universes/v1/places/${gameId}/universe`);
         const result = await apiCaller.get(`https://thumbnails.roblox.com/v1/games/multiget/thumbnails?universeIds=${res['universeId']}&countPerUniverse=1&defaults=true&size=768x432&format=Png&isCircular=false`)
