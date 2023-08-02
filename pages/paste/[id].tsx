@@ -9,7 +9,7 @@ const PastePage: FC<PastePageProps> = ({ paste, success }) => {
   
   return (
     <Layout>
-      <div className="w-[1450px] mx-auto">
+      <div className="w-[1369px] mx-auto">
         <div className="relative w-full mb-[120px]">
           <img src="/images/paste/cardbg.png" alt="bg" className="absolute top-0 left-0 right-0 rounded-t-[10px] w-full" />
           <Card title={paste.title} style="absolute top-[76px] left-0 right-0 linear-gradient-card" bgImg="/images/paste/cardbg.png">

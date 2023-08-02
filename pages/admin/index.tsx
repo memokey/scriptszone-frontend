@@ -25,7 +25,7 @@ const Admin = () => {
   return (
     <AdminLayout>
       {ready && authenticated && (
-        <div className="w-[1450px] mx-auto grid grid-cols-12 gap-[36px]">
+        <div className="w-[1369px] mx-auto grid grid-cols-12 gap-[36px]">
           <div className="col-span-7">
             {pastes && (
               pastes.map((paste, index) => (
