@@ -38,8 +38,8 @@ const Admin = () => {
           </div>
           <div className="col-span-5">
           {pastes && (
-            pastes.map((index) => (
-              <PasteView key={index}/>
+            pastes.map((paste, index) => (
+              <PasteView key={index} views={paste.views}/>
             )))
           }
           </div>

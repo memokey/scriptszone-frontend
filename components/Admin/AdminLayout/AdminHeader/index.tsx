@@ -64,6 +64,7 @@ const AdminHeader = () => {
           title: paste.title,
           description: paste.description,
           scripts: paste.scripts,
+          views: paste.views,
           gameLink: paste.gameLink,
           date: convertDateFormat(paste.createdAt)
         })

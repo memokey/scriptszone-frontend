@@ -12,6 +12,10 @@ const PastePage: FC<PastePageProps> = ({ paste, success }) => {
   const [gameLink, setGameLink] = useState('/images/paste/cardbg.png');
 
   useEffect(() => {
+    apiCaller.get(`/pastes/countViews/${paste._id}`);
+  }, []);
+
+  useEffect(() => {
     const fetchGameThumbnailLink = async () => {
       try {
         const {

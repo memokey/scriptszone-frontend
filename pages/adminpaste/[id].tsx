@@ -16,6 +16,10 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   const router = useRouter();
 
   useEffect(() => {
+    apiCaller.get(`/pastes/countViews/${paste._id}`);
+  }, []);
+
+  useEffect(() => {
     const fetchGameThumbnailLink = async () => {
       try {
         const {

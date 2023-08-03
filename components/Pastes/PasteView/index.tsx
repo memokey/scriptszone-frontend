@@ -3,12 +3,16 @@ import { Card } from "../../Common/Cards";
 import { EyeIcon } from "../../Icons/EyeIcon";
 import { ReportIcon, UserGroupIcon, WarningIcon } from "../../Icons";
 
-const PasteView = () => {
+type PasteViewType = {
+  views: number;
+}
+
+const PasteView = (props: PasteViewType) => {
   return (
     <Card style="mb-[32px]">
       <div className="flex items-center gap-[19px] mb-[18px]">
         <EyeIcon />
-        <div className="text-secondary text-[20px] font-medium">{'XXX'} Views</div>
+        <div className="text-secondary text-[20px] font-medium">{props.views} Views</div>
       </div>
       <div className="flex gap-[36px] mb-[18px]">
         <div className="flex items-center gap-[19px]">
