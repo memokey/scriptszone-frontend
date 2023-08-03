@@ -76,7 +76,9 @@ const AdminHeader = () => {
   return (
     <div className="flex justify-between py-[30px] items-center mx-[132px]">
       <div className="flex gap-12">
-        <Logo />
+        <Logo onClick={() => {
+          router.push('/admin');
+        }}/>
         <MenuItems menus={MENU_ADMIN_LIST} />
       </div>
       <input 

@@ -11,7 +11,11 @@ const Header = () => {
   return (
     <div className="flex justify-between py-[30px] items-center mx-[132px]">
       <div className="flex gap-24">
-        <Logo />
+        <Logo onClick={
+          () => {
+            router.push('/');
+          }
+        }/>
         <MenuItems menus={MENU_LIST} />
       </div>
       <div className="flex gap-8">
