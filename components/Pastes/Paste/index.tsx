@@ -93,7 +93,7 @@ const Paste = (props: PasteType) => {
           onClick={() => {}} 
         />
       </div>
-    </Card> 
+    </Card>
   );
 }
 
