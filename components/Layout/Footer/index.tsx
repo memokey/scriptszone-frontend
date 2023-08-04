@@ -8,17 +8,11 @@ const Footer = () => {
       <div className="flex justify-between items-center pb-[48px]">
         <div className="">
           <h1 className="text-[18px] font-bold">Scripts.zone</h1>
-          <p className="text-[16px] font-normal"> By scripters for scripters</p>
+          <p className="text-[16px] font-normal">The better script site</p>
         </div>
         <div>
           <div className="flex gap-4">
-            {SOCIAL_LINKS.map((link, index) => (
-              <SocialLink
-                key={index}
-                icon={link.icon}
-                link={link.link}
-              />
-            ))}
+            
           </div>
         </div>
       </div>

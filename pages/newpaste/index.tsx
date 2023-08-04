@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "../../components/Common/Cards";
 import Layout from "../../components/Layout";
 import PrimaryButton from "../../components/Common/Buttons/PrimaryButton";
 import { MessageIcon } from "../../components/Icons";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { apiCaller } from "../../utils/fetcher";
 
 const newPaste = () => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const submitForm = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await apiCaller.post('/pastes/mailerlite', {email});
+      setSuccess(true);
+    } catch (error) {
+      setError(error.message);
+    }
+}
+
   return (
     <Layout>
       <div className="mx-[132px]">
@@ -18,12 +35,18 @@ const newPaste = () => {
           <Card style="px-[60px]">
             <h2 className="text-secondary text-[57px] font-bold text-center">Get notified</h2>
             <p className="text-black text-[27px] font-medium mb-8 text-center">For the full release of Scripts Zone</p>
-            <input type="text" className="w-full px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" placeholder="Email Address" />
+            <input 
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className="w-full px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" 
+              placeholder="Email Address" 
+            />
             <div className="flex justify-center mt-[20px]">
               <PrimaryButton
                 icon={<MessageIcon />}
                 caption="Send Email Confirmation"
-                onClick={() => {}} 
+                onClick={submitForm} 
               />
             </div>
           </Card>

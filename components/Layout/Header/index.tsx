@@ -16,10 +16,10 @@ const Header = () => {
             router.push('/');
           }
         }/>
-        <MenuItems menus={MENU_LIST} />
+        {/* <MenuItems menus={MENU_LIST} /> */}
       </div>
       <div className="flex gap-8">
-        <input type="text" className="px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" placeholder="Search scripts..." />
+        {/* <input type="text" className="px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" placeholder="Search scripts..." /> */}
         <PrimaryButton
           caption={'Paste'}
           icon={<PlusIcon />}

@@ -79,17 +79,21 @@ const AdminHeader = () => {
         <Logo onClick={() => {
           router.push('/admin');
         }}/>
-        <MenuItems menus={MENU_ADMIN_LIST} />
+        {ready && authenticated && (
+          <MenuItems menus={MENU_ADMIN_LIST} />
+        )}
       </div>
-      <input 
-        type="text" 
-        className="px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" 
-        placeholder="Search scripts..." 
-        value={searchValue}
-        onChange={(e) => {
-          setSearchValue(e.target.value);
-        }}
-      />
+      {ready && authenticated && (
+        <input 
+          type="text" 
+          className="px-6 py-3 border border-[#E9E9E9] rounded-[6px] focus:outline-none" 
+          placeholder="Search scripts..." 
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
+        />
+      )}
       <div className="flex gap-8 items-center">
         {ready && authenticated && (
           <PrimaryButton
