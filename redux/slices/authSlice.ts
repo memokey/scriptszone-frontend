@@ -6,11 +6,13 @@ import { PasteType } from '../../components/Pastes/Paste';
 export interface AuthState {
   authtoken: string;
   pastes: any[];
+  adBlockerFlag: boolean;
 }
 
 const initialState: AuthState = {
   authtoken: '',
   pastes: [],
+  adBlockerFlag: true,
 };
 
 type loginProps = {
@@ -54,6 +56,9 @@ export const authSlice = createSlice({
     setPastes(state, action: PayloadAction<any[]>) {
       state.pastes = action.payload;
     },
+    setAdBlockerFlag(state, action: PayloadAction<any>) {
+      state.adBlockerFlag = action.payload;
+    },
     removePaste(state, action: PayloadAction<string>) {
       const pastes = [...state.pastes];
       const pasteIndex = pastes.findIndex(s => s.id == action.payload);
@@ -69,6 +74,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setAuthToken, setPastes, removePaste } = authSlice.actions;
+export const { setAuthToken, setPastes, removePaste, setAdBlockerFlag } = authSlice.actions;
 
 export default authSlice.reducer;

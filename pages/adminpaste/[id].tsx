@@ -56,8 +56,8 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
   return (
     <AdminLayout>
       <div className="w-[1369px] mx-auto flex gap-4">
-        <div className="w-[300px] bg-[#FAFAFA]">
-        <div><script data-cfasync="false" async type="text/javascript" src="//drubbersestia.com/tKJ6KABkY7ImVibF/67401"></script></div>
+        <div className="w-[300px]">
+          <script data-cfasync="false" async type="text/javascript" src="//drubbersestia.com/tKJ6KABkY7ImVibF/67401"></script>
         </div>
         <div className="w-full">
           <div className="relative w-full mb-[120px]">
@@ -98,12 +98,12 @@ const AdminPastePage: FC<PastePageProps> = ({ paste, success }) => {
               </div>
             </div>
           </Card>
-          <div className="w-full h-[250px] bg-[#FAFAFA]">
-            <div><script data-cfasync="false" async type="text/javascript" src="//drubbersestia.com/t03CUCJiduwD8E5m/67400"></script></div>
+          <div className="w-full h-[250px]">
+            <script data-cfasync="false" async type="text/javascript" src="//drubbersestia.com/t03CUCJiduwD8E5m/67400"></script>
           </div>
         </div>
-        <div className="w-[300px] bg-[#FAFAFA]">
-        <div><script data-cfasync="false" async type="text/javascript" src="//drubbersestia.com/te0TiHU8Clm/67402"></script></div>
+        <div className="w-[300px]">
+          <script data-cfasync="false" async type="text/javascript" src="//drubbersestia.com/te0TiHU8Clm/67402"></script>
         </div>
       </div>
     </AdminLayout>

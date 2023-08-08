@@ -9,6 +9,7 @@
   "dependencies": {
     "@privy-io/react-auth": "^1.30.2",
     "@reduxjs/toolkit": "^1.9.5",
+    "adblock-detect-react": "^1.1.0",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "next": "latest",

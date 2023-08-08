@@ -11,3 +11,34 @@
 .language-javascript {
   padding: 0px !important;
 }
+
+.ad-blocker-message {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.ad-blocker-message p {
+  margin: 0;
+  color: #721c24;
+}
+
+.ad-blocker-message a {
+  color: #721c24;
+  text-decoration: underline;
+}
+
+.ad-blocker-message a:hover {
+  text-decoration: none;
+}
+
+/* Center the ad blocker message */
+.ad-blocker-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
