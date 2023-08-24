@@ -4,8 +4,8 @@ import Logo from "../../../Layout/Header/Logo";
 import { usePrivy } from "@privy-io/react-auth";
 import PrimaryButton from "../../../Common/Buttons/PrimaryButton";
 import WalletButton from "../../WalletButton";
-import { setAuthToken, setPastes } from "../../../../redux/slices/authSlice";
-import { useDispatch } from 'react-redux';
+import { setAuthToken, setDebouncedValue, setPastes } from "../../../../redux/slices/authSlice";
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { apiCaller } from "../../../../utils/fetcher";
 import { convertDateFormat } from "../../../../utils";
 import MenuItems from "../../../Layout/Header/MenuItems";
@@ -14,6 +14,10 @@ import { MENU_ADMIN_LIST } from "../../../../data/header";
 const AdminHeader = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { debouncedValue } = useSelector((state: RootStateOrAny) => ({
+    debouncedValue: state.auth.debouncedValue,
+  }));
+
   const {
     ready, 
     authenticated, 
@@ -21,7 +25,6 @@ const AdminHeader = () => {
   } = usePrivy();
 
   const [searchValue, setSearchValue] = useState('');
-  const [debouncedValue, setDebouncedValue] = useState('');
 
   useEffect(() => {
     const getAuthToken = async () => {
@@ -36,42 +39,13 @@ const AdminHeader = () => {
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setDebouncedValue(searchValue);
+      dispatch(setDebouncedValue(searchValue));
     }, 500); // 500ms delay
 
     return () => {
       clearTimeout(timerId);
     };
   }, [searchValue]);
-
-  useEffect(() => {
-      // Call your search function here
-      fetchPastes();
-  }, [debouncedValue]);
-
-  useEffect(() => {
-    // Call your search function here
-    fetchPastes();
-  }, []);
-
-  const fetchPastes = async () => {
-    const res: any = await apiCaller.post('/pastes/fetchpastes', {searchValue: debouncedValue});
-    let pastes = [];
-    if(res.data.pastes) {
-      res.data.pastes.forEach(paste => {
-        pastes.push({
-          id: paste._id,
-          title: paste.title,
-          description: paste.description,
-          scripts: paste.scripts,
-          views: paste.views,
-          gameLink: paste.gameLink,
-          date: convertDateFormat(paste.createdAt)
-        })
-      });
-    }
-    dispatch(setPastes(pastes));
-  }
 
   return (
     <div className="flex justify-between py-[30px] items-center mx-[132px]">

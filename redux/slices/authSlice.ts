@@ -6,12 +6,14 @@ import { PasteType } from '../../components/Pastes/Paste';
 export interface AuthState {
   authtoken: string;
   pastes: any[];
+  debouncedValue: string;
   adBlockerFlag: boolean;
 }
 
 const initialState: AuthState = {
   authtoken: '',
   pastes: [],
+  debouncedValue: '',
   adBlockerFlag: true,
 };
 
@@ -56,6 +58,9 @@ export const authSlice = createSlice({
     setPastes(state, action: PayloadAction<any[]>) {
       state.pastes = action.payload;
     },
+    setDebouncedValue(state, action: PayloadAction<string>) {
+      state.debouncedValue = action.payload;
+    },
     setAdBlockerFlag(state, action: PayloadAction<any>) {
       state.adBlockerFlag = action.payload;
     },
@@ -74,6 +79,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setAuthToken, setPastes, removePaste, setAdBlockerFlag } = authSlice.actions;
+export const { setAuthToken, setPastes, setDebouncedValue, removePaste, setAdBlockerFlag } = authSlice.actions;
 
 export default authSlice.reducer;

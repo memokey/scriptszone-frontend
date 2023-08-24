@@ -1,6 +1,7 @@
 export { PlusIcon } from './PlusIcon'
 export { YoutubeIcon } from './YoutubeIcon'
 export { DiscordIcon } from './DiscordIcon'
+export { CopyIcon } from './CopyIcon'
 export { TwitterIcon } from './TwitterIcon'
 export { TrashIcon } from './TrashIcon'
 export { WarningIcon } from './WarningIcon'

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Card } from "../../Common/Cards";
 import { minifyString } from "../../../utils";
 import SecondaryButton from "../../Common/Buttons/SecondaryButton";
-import { BanIcon, MessageIcon, TrashIcon, WarningIcon } from "../../Icons";
+import { BanIcon, CopyIcon, MessageIcon, TrashIcon, WarningIcon } from "../../Icons";
 import { useRouter } from "next/router";
 import { apiCaller } from "../../../utils/fetcher";
 import { toast } from "react-hot-toast";
@@ -44,6 +44,14 @@ const Paste = (props: PasteType) => {
     })
   }
 
+  const copy = (id) => {
+    navigator.clipboard.writeText('https://scripts.zone/scripts/' + id).then(function() {
+      toast('Copying to clipboard was successful!');
+    }, function(err) {
+      console.error('Could not copy text: ', err);
+    });
+  }
+
   return (
     <Card style="mb-8">
       <div className="flex gap-4 mb-[48px]">
@@ -75,22 +83,22 @@ const Paste = (props: PasteType) => {
           }} 
         />
         <SecondaryButton
-          key={0}
+          key={1}
           caption="Warn"
           icon={<div className="w-7 h-7"><WarningIcon stroke="#FF3D3D" /></div>}
           onClick={() => {}} 
         />
         <SecondaryButton
-          key={0}
+          key={2}
           caption="Ban"
           icon={<BanIcon />}
           onClick={() => {}} 
         />
         <SecondaryButton
-          key={0}
-          caption="MSG"
-          icon={<MessageIcon />}
-          onClick={() => {}} 
+          key={3}
+          caption="Copy"
+          icon={<CopyIcon />}
+          onClick={() => copy(props.id)} 
         />
       </div>
     </Card>

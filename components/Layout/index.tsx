@@ -13,6 +13,9 @@ const Layout = ({ children }: Props) => (
   <AdBlockerDetector>
     <div>
       <Header />
+      <div>
+        <script data-cfasync="false" async type="text/javascript" src="//wytingqueery.com/gE4ukaBpp5tou/68736"></script>
+      </div>
       {children}
       <Footer />
     </div>
